@@ -1,5 +1,4 @@
 require 'spec_helper'
-require './src/plateau'
 
 describe 'Plateau class' do
   context 'initialization' do

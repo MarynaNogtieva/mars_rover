@@ -1,5 +1,4 @@
 require 'spec_helper'
-require './src/coordinate'
 
 describe 'Coordinate class' do
   context 'initialization' do
