@@ -1,4 +1,5 @@
 require './src/coordinate'
+require './src/command'
 
 #########
 # Direction class has four directions - North, South, East. West
@@ -7,24 +8,9 @@ require './src/coordinate'
 #########
 
 class Direction
-  DIRECTIONS = %i[NORTH EAST SOUTH WEST].freeze
-
-  LEFT_DIRECTIONS = {
-    :NORTH => :EAST,
-    :EAST => :SOUTH,
-    :SOUTH => :WEST,
-    :WEST => :SOUTH
-  }.freeze
-
-  RIGHT_DIRECTIONS ={
-    :NORTH => :EAST,
-    :EAST => :SOUTH,
-    :SOUTH => :WEST,
-    :WEST => :NORTH
-  }.freeze
-
   class << self
-    def direction_coordinate(direction)
+    def direction_coordinate(direction_name)
+      direction = transform_direction_name(direction_name)
       return nil if !DIRECTIONS.include?(direction)
       coordinate_hash = nil
       case direction
@@ -42,9 +28,51 @@ class Direction
 
     # Rotate current direction of the rover by 90 degrees depending where it is supposed to turn
     # return symbol of the direction name i.e :NORTH
-    def rotate_current_direction(rover_current_direction:, command_type: )
-      return RIGHT_DIRECTIONS[rover_current_direction] if command_type == 'right'
-      return LEFT_DIRECTIONS[rover_current_direction] if command_type == 'left'
+    def rotate_current_direction(current_direction:, command_type: )
+      direction = transform_direction_name(current_direction)
+      return transform_direction_name(RIGHT_DIRECTIONS[direction]) if command_type == Command.right
+      return transform_direction_name(LEFT_DIRECTIONS[direction]) if command_type == Command.left
+    end
+
+    private
+
+    DIRECTIONS = %i[NORTH EAST SOUTH WEST].freeze
+
+    LEFT_DIRECTIONS = {
+      :NORTH => :EAST,
+      :EAST => :SOUTH,
+      :SOUTH => :WEST,
+      :WEST => :SOUTH
+    }.freeze
+
+    RIGHT_DIRECTIONS ={
+      :NORTH => :EAST,
+      :EAST => :SOUTH,
+      :SOUTH => :WEST,
+      :WEST => :NORTH
+    }.freeze
+
+    def transform_direction_name(direction_name)
+      return case
+        when direction_name.upcase == 'N'
+          :NORTH
+        when direction_name.upcase == 'S'
+          :SOUTH
+        when direction_name.upcase == 'W'
+          :WEST
+        when direction_name.upcase == 'E'
+          :EAST
+        when direction_name == :NORTH
+          'N'
+        when direction_name == :SOUTH
+          'S'
+        when direction_name == :WEST
+          'W'
+        when direction_name == :EAST
+          'E'
+        else
+          nil
+        end
     end
   end
 end
