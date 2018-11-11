@@ -12,5 +12,17 @@ class Plateau
     @top_right_coordinate = Coordinate.new(x,y)
   end
 
-  # TODO: add check boundaries method
+  def in_boundaries?(x, y)
+    valid_x?(x) && valid_y?(y)
+  end
+
+  private
+
+  def valid_x?(x)
+    x >= bottom_left_coordinate.x && x <= top_right_coordinate.x
+  end
+
+  def valid_y?(y)
+    y >= bottom_left_coordinate.y && y <= top_right_coordinate.y
+  end
 end

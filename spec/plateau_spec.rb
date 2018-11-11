@@ -12,5 +12,19 @@ describe 'Plateau class' do
       end
     end
   end
+
+  context 'validation' do
+    describe '#in_boundaries?' do
+      it 'should return true if coordinates are inside boundaries' do
+        plateau = Plateau.new(3, 5)
+        expect(plateau.in_boundaries?(2,4)).to be true
+      end
+
+      it 'should return false if coordinates are outside the boundaries' do
+        plateau = Plateau.new(3, 5)
+        expect(plateau.in_boundaries?(4,4)).to be false
+      end
+    end
+  end
 end
 
