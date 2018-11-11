@@ -12,12 +12,12 @@ class Coordinate
   end
 
   def to_s
-    "#{@x}, #{@y}"
+    "#{x}, #{y}"
   end
 
   def change(x:, y:)
-    @x += x
-    @y += y
+    self.x += x
+    self.y += y
     self
   end
 end
