@@ -6,6 +6,10 @@ user_file_path = gets.chomp
 
 input = user_file_path.empty? || user_file_path.nil? ? file_path : user_file_path
 
-main_point = MainPoint.new(input)
-main_point.read_file
-main_point.show_rovers_values
+begin
+  main_point = MainPoint.new(input)
+  main_point.read_file
+  main_point.show_rovers_values
+rescue StandardError => e
+  puts "Something went wrong: \n#{e}"
+end
