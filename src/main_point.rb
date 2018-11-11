@@ -3,7 +3,11 @@ require './src/rover'
 require './src/coordinate'
 require './src/plateau'
 
-#responsible for making plateau and rovers and initializeing operations for moving and getting info from each rover about it's current location and direction
+#######
+# MainPoint class responsible for making plateau and rovers
+# and initializeing operations for moving
+# and getting info from each rover about it's current location and direction
+#######
 class MainPoint
   attr_reader :file_path, :plateau, :rovers
   def initialize(file_path)
@@ -18,7 +22,6 @@ class MainPoint
   def read_file
     rover = nil
     File.open(file_path,'r').each_with_index do |line, index|
-      puts "#{index} #{line}"
       if index.zero?
         make_plateau(line)
       elsif index % 2 == 0
@@ -45,7 +48,7 @@ class MainPoint
 
   def start_rover(rover, line)
     return nil if rover.nil?
-    command_line = line.split('')
+    command_line = line.gsub('\n','').split('')
     command_line.each do |letter|
       case letter.upcase
       when 'R'
@@ -54,12 +57,15 @@ class MainPoint
         rover.turn_left
       when 'M'
         rover.make_a_move
-      else
-        puts 'There was wrong letter in the command line'
       end
     end
     rover
-    puts "#{rover.inspect}"
+  end
+
+  def show_rovers_values
+    rovers.each do |rover|
+      puts rover.to_s
+    end
   end
 
   private

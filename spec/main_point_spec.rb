@@ -65,5 +65,14 @@ describe 'MainPoint class' do
         expect(@main_point.start_rover(rover,  command_line)).to be nil
       end
     end
+
+    describe '#show_rovers_values' do
+      it 'shows coordinates and directions of all rovers on plateau' do
+        @main_point.read_file
+        @main_point.show_rovers_values
+        expect(@main_point.rovers[0].to_s).to eq '1 3 N'
+        expect(@main_point.rovers[1].to_s).to eq '5 1 E'
+      end
+    end
   end
 end
