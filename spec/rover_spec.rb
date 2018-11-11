@@ -1,34 +1,42 @@
 require 'spec_helper'
 
 describe 'Rover class' do
-  context 'initialization' do
-    describe '#initialize' do
-      it 'should initialize Rover class with current direction, current position and plateau it should ride on' do
-        current_coordinate = Coordinate.new(1, 2)
-        current_direction = 'N'
-        plateau = Plateau.new(5, 5)
-        rover = Rover.new(current_coordinate, current_direction, plateau)
+  before(:each) do
+    @current_coordinate = Coordinate.new(1, 2)
+    @current_direction = 'N'
+    @plateau = Plateau.new(5, 5)
+    @rover = Rover.new(@current_coordinate, @current_direction, @plateau)
+  end
 
-        expect(rover.current_direction).to eq current_direction
-        expect(rover.current_coordinate.x).to eq current_coordinate.x
-        expect(rover.current_coordinate.y).to eq current_coordinate.y
-        expect(rover.plateau).to eq plateau
-      end
+  describe '#initialize' do
+    it 'should initialize Rover class with current direction, current position and plateau it should ride on' do
+      expect(@rover.current_direction).to eq @current_direction
+      expect(@rover.current_coordinate.x).to eq @current_coordinate.x
+      expect(@rover.current_coordinate.y).to eq @current_coordinate.y
+      expect(@rover.plateau).to eq @plateau
     end
+  end
 
-    describe '#turn_right' do
-      xit 'should alter current direction from N to W' do
-      end
+  describe '#turn_right' do
+    it 'should alter current direction from N to E' do
+      @rover.turn_right
+      expect(@rover.current_direction).to eq 'E'
     end
+  end
 
-    describe '#turn_left' do
-      xit 'should alter current direction from N to E' do
-      end
+  describe '#turn_left' do
+    it 'should alter current direction from N to W' do
+      @rover.turn_left
+      expect(@rover.current_direction).to eq 'W'
     end
+  end
 
-    describe '#move' do
-      xit 'should alter current coordinates depending on the current direction' do
-      end
+  describe '#make_a_move' do
+    it 'should alter current coordinates depending on the current direction that is = W' do
+      @rover.turn_left
+      @rover.make_a_move
+      expect(@rover.current_coordinate.x).to eq 0
+      expect(@rover.current_coordinate.y).to eq 2
     end
   end
 end
