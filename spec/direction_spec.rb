@@ -45,12 +45,12 @@ describe 'Direction class' do
       expect(new_direction).to eq('E')
     end
 
-    it 'returns W for WEST if current direction is :SOUTH and command type is left' do
+    it 'returns E for EAST if current direction is :SOUTH and command type is left' do
       new_direction = Direction.rotate_current_direction(
                         current_direction: 'S',
                         command_type: Command.left
                       )
-      expect(new_direction).to eq('W')
+      expect(new_direction).to eq('E')
     end
   end
 end
