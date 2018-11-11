@@ -26,8 +26,8 @@ class Rover
 
   def make_a_move
     new_coordinate_values = Command.get_new_coordinate_values(current_direction)
-    new_coordinate = current_coordinate.add_values(new_x: new_coordinate_values[:x], new_y: new_coordinate_values[:y])
-    if plateau.in_boundaries?(new_coordinate[:x], new_coordinate[:y])
+    potential_new_coordinate = current_coordinate.add_values(new_x: new_coordinate_values[:x], new_y: new_coordinate_values[:y])
+    if plateau.in_boundaries?(potential_new_coordinate[:x], potential_new_coordinate[:y])
       self.current_coordinate = current_coordinate.change(x: new_coordinate_values[:x], y: new_coordinate_values[:y])
     end
   end
