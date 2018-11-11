@@ -18,4 +18,11 @@ describe 'Command class' do
       expect(Command.move).to eq 'M'
     end
   end
+
+  describe '.get_new_direction' do
+    it 'should return new direction after the right turn' do
+      current_direction = 'N'
+      expect(Command.get_new_direction('N', Command.right)).to eq 'E'
+    end
+  end
 end
