@@ -52,5 +52,17 @@ describe 'Coordinate class' do
         expect(@coordinate.object_id).to eq coordinate.object_id
       end
     end
+
+    describe '#add_values' do
+      before(:each) { @coordinate = Coordinate.new(0, 0) }
+      it 'should add 2 values without changing current coordinate values' do
+        new_value = @coordinate.add_values(new_x: 1, new_y: 3)
+
+        expect(@coordinate.x).to eq 0
+        expect(@coordinate.y).to eq 0
+        expect(new_value[:x]).to eq 1
+        expect(new_value[:y]).to eq 3
+      end
+    end
   end
 end

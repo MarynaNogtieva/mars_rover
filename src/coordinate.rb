@@ -20,4 +20,10 @@ class Coordinate
     self.y += y
     self
   end
+
+  def add_values(new_x:, new_y:)
+    new_x = x + new_x
+    new_y = y + new_y
+    { x: new_x, y: new_y }
+  end
 end
