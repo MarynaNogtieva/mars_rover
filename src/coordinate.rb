@@ -12,7 +12,7 @@ class Coordinate
   end
 
   def to_s
-    "#{x}, #{y}"
+    "#{x} #{y}"
   end
 
   def change(x:, y:)

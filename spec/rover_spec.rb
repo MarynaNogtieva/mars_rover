@@ -39,5 +39,11 @@ describe 'Rover class' do
       expect(@rover.current_coordinate.y).to eq 2
     end
   end
+
+  describe '#to_s' do
+    it 'should show current_coordinate and current_direction' do
+      expect(@rover.to_s).to eq "#{@rover.current_coordinate.x} #{@rover.current_coordinate.y} #{@rover.current_direction}"
+    end
+  end
 end
 

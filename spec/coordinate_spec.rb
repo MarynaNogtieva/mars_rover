@@ -15,7 +15,7 @@ describe 'Coordinate class' do
     describe '#to_s' do
       it 'should return a string' do
         coordinate = Coordinate.new(1, 2)
-        expect(coordinate.to_s).to eq '1, 2'
+        expect(coordinate.to_s).to eq '1 2'
       end
     end
 

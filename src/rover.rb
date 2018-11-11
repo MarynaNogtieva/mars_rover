@@ -31,4 +31,8 @@ class Rover
       self.current_coordinate = current_coordinate.change(x: new_coordinate_values[:x], y: new_coordinate_values[:y])
     end
   end
+
+  def to_s
+    "#{current_coordinate.to_s} #{current_direction}"
+  end
 end
