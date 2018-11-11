@@ -53,7 +53,6 @@ class Direction
     }.freeze
 
     def transform_direction_name(direction_name)
-      puts "#{direction_name == 'NORTH'}"
       return case
         when direction_name.upcase == 'N'
           :NORTH
