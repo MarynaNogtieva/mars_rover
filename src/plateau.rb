@@ -7,9 +7,9 @@ require './src/coordinate'
 class Plateau
   attr_accessor :top_right_coordinate, :bottom_left_coordinate
 
-  def initialize(x, y)
-    @bottom_left_coordinate = Coordinate.new(0,0)
-    @top_right_coordinate = Coordinate.new(x,y)
+  def initialize(bottom_coordinate, top_coordinate)
+    @bottom_left_coordinate = bottom_coordinate
+    @top_right_coordinate = top_coordinate
   end
 
   def in_boundaries?(x, y)

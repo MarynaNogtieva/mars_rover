@@ -12,7 +12,7 @@ class MainPoint
   attr_reader :file_path, :plateau, :rovers
   def initialize(file_path)
     @file_path = file_path
-    @plateau = Plateau.new(0, 0)
+    @plateau = Plateau.new(Coordinate.new(0, 0), Coordinate.new(0, 0))
     @rovers = []
   end
 

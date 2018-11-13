@@ -1,11 +1,7 @@
-require './src/coordinate'
-require './src/plateau'
-require './src/direction'
+require './src/command'
 
 #########
-# Coordinate class has values of x and y
-# It's responsible to display current values,
-# change them
+# TODO: add description
 #########
 class Rover
   attr_accessor :current_coordinate, :current_direction, :plateau
