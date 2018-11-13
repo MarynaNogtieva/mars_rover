@@ -46,7 +46,7 @@ class Direction
       :SOUTH => 'S',
       :WEST => 'W',
       :EAST => 'E'
-    }
+    }.freeze
 
     LEFT_DIRECTIONS = {
       :NORTH => :WEST,
