@@ -11,7 +11,7 @@ class Direction
   class << self
     def direction_coordinate(direction_name)
       direction = transform_direction_name(direction_name)
-      return nil if !DIRECTIONS.include?(direction)
+      return nil if !FULL_DIRECTIONS_NAMES.include?(direction)
       coordinate_hash = { x: 0, y: 0 }
       case direction
         when :NORTH
@@ -36,7 +36,17 @@ class Direction
 
     private
 
-    DIRECTIONS = %i[NORTH EAST SOUTH WEST].freeze
+    FULL_DIRECTIONS_NAMES = %i[NORTH EAST SOUTH WEST].freeze
+    ALL_DIRECTIONS = {
+      'N' => :NORTH,
+      'S' => :SOUTH,
+      'W' => :WEST,
+      'E' => :EAST,
+      :NORTH => 'N',
+      :SOUTH => 'S',
+      :WEST => 'W',
+      :EAST => 'E'
+    }.freeze
 
     LEFT_DIRECTIONS = {
       :NORTH => :WEST,
@@ -53,26 +63,7 @@ class Direction
     }.freeze
 
     def transform_direction_name(direction_name)
-      return case
-        when direction_name.upcase == 'N'
-          :NORTH
-        when direction_name.upcase == 'S'
-          :SOUTH
-        when direction_name.upcase == 'W'
-          :WEST
-        when direction_name.upcase == 'E'
-          :EAST
-        when direction_name == :NORTH
-          'N'
-        when direction_name == :SOUTH
-          'S'
-        when direction_name == :WEST
-          'W'
-        when direction_name == :EAST
-          'E'
-        else
-          nil
-        end
+      ALL_DIRECTIONS.fetch(direction_name, nil)
     end
   end
 end

@@ -1,11 +1,8 @@
-require './src/coordinate'
-require './src/plateau'
-require './src/direction'
+require './src/command'
 
 #########
-# Coordinate class has values of x and y
-# It's responsible to display current values,
-# change them
+# Rover class is responsible for creating rover objects with coordinates and direction
+# It can turn and move and display info about its objects
 #########
 class Rover
   attr_accessor :current_coordinate, :current_direction, :plateau
@@ -26,7 +23,10 @@ class Rover
 
   def make_a_move
     new_coordinate_values = Command.get_new_coordinate_values(current_direction)
-    potential_new_coordinate = current_coordinate.add_values(new_x: new_coordinate_values[:x], new_y: new_coordinate_values[:y])
+    potential_new_coordinate = current_coordinate.add_values(
+                                new_x: new_coordinate_values[:x],
+                                new_y: new_coordinate_values[:y]
+                              )
     if can_move?(plateau, potential_new_coordinate)
       self.current_coordinate = current_coordinate.change(x: new_coordinate_values[:x], y: new_coordinate_values[:y])
     end

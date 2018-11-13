@@ -4,7 +4,7 @@ describe 'Rover class' do
   before(:each) do
     @current_coordinate = Coordinate.new(1, 2)
     @current_direction = 'N'
-    @plateau = Plateau.new(5, 5)
+    @plateau = Plateau.new(Coordinate.new(0, 0), Coordinate.new(5, 5))
     @rover = Rover.new(@current_coordinate, @current_direction, @plateau)
   end
 

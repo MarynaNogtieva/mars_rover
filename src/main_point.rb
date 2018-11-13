@@ -10,9 +10,9 @@ require './src/plateau'
 #######
 class MainPoint
   attr_reader :file_path, :plateau, :rovers
-  def initialize(file_path)
+  def initialize(file_path, plateau)
     @file_path = file_path
-    @plateau = Plateau.new(0, 0)
+    @plateau = plateau
     @rovers = []
   end
 
