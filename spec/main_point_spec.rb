@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'MainPoint class' do
 
-  before(:each) { @main_point = MainPoint.new('./spec/input_1_spec.txt') }
+  before(:each) { @main_point = MainPoint.new('./spec/input_1_spec.txt', Plateau.new(Coordinate.new(0, 0), Coordinate.new(0, 0))) }
 
   context 'initialization' do
     describe '#initialize' do
