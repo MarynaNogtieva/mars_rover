@@ -1,7 +1,8 @@
 require './src/command'
 
 #########
-# TODO: add description
+# Rover class is responsible for creating rover objects with coordinates and direction
+# It can turn and move and display info about its objects
 #########
 class Rover
   attr_accessor :current_coordinate, :current_direction, :plateau
